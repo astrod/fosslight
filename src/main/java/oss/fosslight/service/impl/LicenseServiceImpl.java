@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -495,4 +496,6 @@ public class LicenseServiceImpl extends CoTopComponent implements LicenseService
 			}
 		}	
 	}
+
+
 }

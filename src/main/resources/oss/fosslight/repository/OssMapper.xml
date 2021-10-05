@@ -1883,4 +1883,7 @@
 		   SET DEACTIVATE_FLAG = #{deactivateFlag}
 		 WHERE OSS_NAME = #{ossName}
 	</update>
+
+
+
 </mapper>

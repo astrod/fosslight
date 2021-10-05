@@ -316,4 +316,6 @@ public interface ProjectMapper {
 	
 	// 20210616_BOM COMPARE FUNC ADD
 	int selectProjectCount(Project project);
+
+
 }

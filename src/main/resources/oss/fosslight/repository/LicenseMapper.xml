@@ -709,4 +709,9 @@
 		WHERE T1.USE_YN = 'Y' 
 			T1.LICENSE_ID = #{licenseId}
 	</select>
+
+
+
+
+
 </mapper>

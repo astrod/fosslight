@@ -4261,7 +4261,8 @@ public class ProjectServiceImpl extends CoTopComponent implements ProjectService
 		
 		return returnList;
 	}
-	
+
+
 	private String getCompareKey(ProjectIdentification param) {
 		return param.getOssName().toLowerCase() + "|" + avoidNull(param.getOssVersion(), "") + "|" + param.getLicenseName();
 	}
