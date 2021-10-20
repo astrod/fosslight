@@ -62,6 +62,9 @@
 					</dd>
 					</c:if>
 				</dl>
+				<div class="overHidden" style="display: inline">
+					<input id="save-config" type="submit" class="btnColor red right clearb mt10 mb5" value="Save Search Config" style="width: 150px;"/>
+				</div>
 				<input type="button" value="Admin Expand apply" class="btnHiddenExpand" />
 				<dl class="hiddenSearch" style="display:none;">
 					<dd>

@@ -65,6 +65,28 @@
 				
 				$("#list").jqGrid('setGridParam', {postData:postData, page : 1}).trigger('reloadGrid');
 			});
+
+            $('#save-config').on('click', function(e) {
+                e.preventDefault();
+                var exPostdata = $("#list").jqGrid('getGridParam','postData');
+                exPostdata.ossId = '';
+                var postData = fn.setGridParam();
+
+                $.ajax({
+                    url : '/searchFilter/project',
+                    type : 'POST',
+                    data : JSON.stringify(postData),
+                    dataType : 'json',
+                    cache : false,
+                    contentType : 'application/json',
+                    success: function(data){
+                        alertify.success('<spring:message code="msg.common.success" />');
+                    },
+                    error: function(data){
+                        alertify.error('<spring:message code="msg.common.valid2" />', 0);
+                    }
+                })
+            })
 			
 			$('#popCancel').click(function(){
 				$('#changeStatusPop').hide();

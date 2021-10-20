@@ -16,9 +16,12 @@
 						<tr>
 							<th class="dCase txStr">Default Tab</th>
 							<td class="dCase">
-								<div class="required"><br/>
+								<div class="required">
 									<c:forEach var="code" items="${ct:getCodeValues(ct:getConstDef('CD_DEFAULT_TAB'))}" varStatus="status">
-										<span class="radioSet"><input type="checkbox" name="defaultTab" id="defaultTab${code[0]}" value="${code[0]}"/><label for="single">${code[1]}</label></span><br/><br/>
+										<div class="lh20 mb5">
+											<input type="checkbox" name="defaultTab" id="defaultTab${code[0]}" value="${code[0]}"/><label for="single">${code[1]}</label>
+											<button type="button" class="btnColor red right" onclick="createTabInFrame(fn.retrieveDestinationName('${code[0]}'), fn.retrieveDestinationURI('${code[0]}'))">Config</button>
+										</div>
 									</c:forEach>
 								</div>
 							</td>

@@ -59,7 +59,10 @@
 				</dl>
 				<c:if test="${ct:isAdmin()}">
 				<input type="button" value="Admin Expand apply" class="btnExpand" />
-				<dl class="adminSearch" style="display:none;">
+					<div class="overHidden" style="display: inline">
+						<input id="save-config" type="submit" class="btnColor red right clearb mt10 mb5" value="Save Search Config" style="width: 150px"/>
+					</div>
+					<dl class="adminSearch" style="display:none;">
 					<dt style="width:20px;"></dt>
 					<dd>
 						<label>Creator</label>

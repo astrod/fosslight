@@ -42,27 +42,69 @@
 				}
 				
 				e.preventDefault();
-				
+
 				var postData=$('#licenseSearch').serializeObject();
-				
+
 				if(initYn) {
 					list.load();
 					initYn = false;
 				} else {
 					var postData = $('#licenseSearch').serializeObject();
-					
+
 					if(postData.restrictions != null) {
 						postData.restrictions = JSON.stringify(postData.restrictions);
 						postData.restrictions = postData.restrictions.replace(/\"|\[|\]/gi, "");
 					} else {
 						postData.restrictions = "";
 					}
-					
+
 					$("#list").jqGrid('setGridParam', {postData:postData, page : 1, url:'/license/listAjax' }).trigger('reloadGrid');
 				}
 			});
-			
-			$('select[name=licenseType]').val('${searchBean.licenseType}').trigger('change');
+
+            $('#save-config').on('click',function(e){
+                initParam = $('#licenseSearch').serializeObject();
+
+                if(initParam.restrictions != null){
+                    initParam.restrictions = JSON.stringify(initParam.restrictions);
+                    initParam.restrictions = initParam.restrictions.replace(/\"|\[|\]/gi, "");
+                } else {
+                    initParam.restrictions = "";
+                }
+
+                e.preventDefault();
+
+                if(initYn) {
+                    list.load();
+                    initYn = false;
+                } else {
+                    var postData = $('#licenseSearch').serializeObject();
+
+                    if(postData.restrictions != null) {
+                        postData.restrictions = JSON.stringify(postData.restrictions);
+                        postData.restrictions = postData.restrictions.replace(/\"|\[|\]/gi, "");
+                    } else {
+                        postData.restrictions = "";
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/searchFilter/license',
+                        data: JSON.stringify(postData),
+                        dataType : 'json',
+                        cache : false,
+                        contentType : 'application/json',
+                        success: function (data) {
+                            alertify.success('<spring:message code="msg.common.success" />', 0);
+                        },
+                        error: function(data){
+                            alertify.error('<spring:message code="msg.common.valid2" />', 0);
+                        }
+                    });
+                }
+            });
+
+            $('select[name=licenseType]').val('${searchBean.licenseType}').trigger('change');
 			$('select[name=obligationType]').val('${searchBean.obligationType}').trigger('change');
 			$('select[name=creator]').val('${searchBean.creator}').trigger('change');
 			$('select[name=modifier]').val('${searchBean.modifier}').trigger('change');

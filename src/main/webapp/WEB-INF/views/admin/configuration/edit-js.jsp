@@ -83,8 +83,47 @@
 			// TODO - Password에대해 기준이 정해지면 추가할 예정
 			
 		    return true;
-		}
-	};
+		},
+        retrieveDestinationURI : function(index) {
+            if(index === '002') {
+                return '#/license/list';
+            }
+            if(index === '003') {
+                return '#/oss/list';
+            }
+            if(index === '004') {
+                return '#/project/list';
+            }
+            if(index === '008') {
+                return '#/vulnerability/list';
+            }
+            if(index === '009') {
+                return '#/selfCheck/list';
+            }
+
+            return '';
+        },
+
+        retrieveDestinationName : function(index) {
+            if(index === '002') {
+                return 'License List';
+            }
+            if(index === '003') {
+                return 'OSS List';
+            }
+            if(index === '004') {
+                return 'Project List';
+            }
+            if(index === '008') {
+                return 'Vulnerability';
+            }
+            if(index === '009') {
+                return 'Self-Check List';
+            }
+
+            return '';
+        }
+    };
 	
 	
 </script>

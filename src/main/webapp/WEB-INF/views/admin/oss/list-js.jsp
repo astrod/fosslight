@@ -46,8 +46,36 @@
 					$("#list").jqGrid('setGridParam', {postData:postData, page : 1, url:'/oss/listAjax'}).trigger('reloadGrid');
 				}
 			});
-			
-			$('select[name=creator]').val('${searchBean.creator}').trigger('change');
+
+            $('#save-config').on('click',function(e){
+                e.preventDefault();
+
+                var postData=$('#ossSearch').serializeObject();
+
+                if(initYn) {
+                    list.load();
+                    initYn = false;
+                } else {
+                    $("#list").jqGrid('setGridParam', {postData:postData, page : 1, url:'/searchFilter/oss'}).trigger('reloadGrid');
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/searchFilter/oss',
+                    data: JSON.stringify(postData),
+                    dataType : 'json',
+                    cache : false,
+                    contentType : 'application/json',
+                    success: function (data) {
+                        alertify.success('<spring:message code="msg.common.success" />', 0);
+                    },
+                    error: function(data){
+                        alertify.error('<spring:message code="msg.common.valid2" />', 0);
+                    }
+                });
+            });
+
+            $('select[name=creator]').val('${searchBean.creator}').trigger('change');
 			$('select[name=modifier]').val('${searchBean.modifier}').trigger('change');
 			
 			$(".cal").on("keyup", function(e){

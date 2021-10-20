@@ -35,6 +35,9 @@
 						<input type="text" name="creator" class="autoComCreatorDivision" value="${searchBean.creator}"/>
 					</dd>
 				</dl>
+				<div class="overHidden" style="display: inline">
+					<input id="save-config" type="submit" class="btnColor red right clearb mt10 mb5" value="Save Search Config" style="width: 150px;"/>
+				</div>
 				<input name="act" type="hidden" value="search"/>
 				<input id="search" type="submit" value="Search" class="btnColor search" />
 				<a class="right" id="helpLink" style="position:absolute; cursor: pointer; top:10px; right:-60px; display:none;"><img alt="" src="/images/user-guide.png" /></a>

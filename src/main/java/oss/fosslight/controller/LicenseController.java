@@ -67,6 +67,8 @@ public class LicenseController extends CoTopComponent{
 			
 			deleteSession("defaultLoadYn");
 		}
+
+		// TODO if searchBean is empty, load from config db
 		
 		model.addAttribute("searchBean", searchBean);
 		

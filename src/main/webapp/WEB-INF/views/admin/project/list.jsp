@@ -89,6 +89,9 @@
 					</c:if>
 				</dl>
 				<input type="button" value="Admin Expand apply" class="btnHiddenExpand" />
+				<div class="overHidden" style="display: inline">
+					<input id="save-config" type="submit" class="btnColor red right clearb mt10 mb5" value="Save Search Config" style="width: 150px"/>
+				</div>
 				<dl class="hiddenSearch" style="display:none;">
 					<dd>
 						<label>OSS Name</label>

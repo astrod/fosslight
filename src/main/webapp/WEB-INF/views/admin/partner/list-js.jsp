@@ -51,8 +51,42 @@
 				
 				$("#list").jqGrid('setGridParam', {postData:postData, page : 1}).trigger('reloadGrid');
 			});
-			
-			$('select[name=division]').val('${searchBean.division}').trigger('change');
+
+            $('#save-config').on('click',function(e){
+                e.preventDefault();
+                var postData=$('#3rdSearch').serializeObject();
+
+                //public 값 넣어주기
+                if($('#checkbox3').is(':checked')){
+                    postData.publicYn = 'N';
+                }else{
+                    postData.publicYn = 'Y';
+                }
+
+                if(postData.status) {
+                    postData.status = JSON.stringify(postData.status);
+                    postData.status = postData.status.replace(/\"|\[|\]/gi, "");
+                }else{
+                    postData.status = "";
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/searchFilter/partner',
+                    data: JSON.stringify(postData),
+                    dataType : 'json',
+                    cache : false,
+                    contentType : 'application/json',
+                    success: function (data) {
+                        alertify.success('<spring:message code="msg.common.success" />', 0);
+                    },
+                    error: function(data){
+                        alertify.error('<spring:message code="msg.common.valid2" />', 0);
+                    }
+                });
+            });
+
+            $('select[name=division]').val('${searchBean.division}').trigger('change');
 			$('select[name=status]').val('${searchBean.status}').trigger('change');
 			
 			$(".cal").on("keyup", function(e){

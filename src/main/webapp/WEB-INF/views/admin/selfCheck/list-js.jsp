@@ -45,8 +45,29 @@
 
 				$("#list").jqGrid('setGridParam', {postData:postData, page : 1}).trigger('reloadGrid');
 			});
-			
-			$('select[name=distributionType]').val('${searchBean.distributionType}').trigger('change');
+
+            $('#save-config').on('click',function(e){
+                e.preventDefault();
+
+                var postData=$('#projectSearch').serializeObject();
+
+                $.ajax({
+                    type: "POST",
+                    url: '/searchFilter/selfcheck',
+                    data: JSON.stringify(postData),
+                    dataType : 'json',
+                    cache : false,
+                    contentType : 'application/json',
+                    success: function (data) {
+                        alertify.error('<spring:message code="msg.common.valid2" />', 0);
+                    },
+                    error: function(data){
+                        alertify.error('<spring:message code="msg.common.valid2" />', 0);
+                    }
+                });
+            });
+
+            $('select[name=distributionType]').val('${searchBean.distributionType}').trigger('change');
 			$('select[name=prjDivision]').val('${searchBean.prjDivision}').trigger('change');
 			
 			$(".cal").on("keyup", function(e){
