@@ -10,10 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import oss.fosslight.config.HistoryConfig;
-import oss.fosslight.domain.OssAnalysis;
-import oss.fosslight.domain.OssMaster;
-import oss.fosslight.domain.ProjectIdentification;
-import oss.fosslight.domain.Vulnerability;
+import oss.fosslight.domain.*;
 
 public interface OssService extends HistoryConfig{
 	String registOssMaster(OssMaster ossMaster);
@@ -107,4 +104,6 @@ public interface OssService extends HistoryConfig{
 	List<OssMaster> getOssListBySync(OssMaster bean);
 
 	List<String> getOssListSyncCheck(List<OssMaster> selectOssList, List<OssMaster> standardOssList);
+
+
 }

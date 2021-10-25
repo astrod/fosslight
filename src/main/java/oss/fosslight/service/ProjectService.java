@@ -10,12 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import oss.fosslight.config.HistoryConfig;
-import oss.fosslight.domain.OssComponents;
-import oss.fosslight.domain.OssNotice;
-import oss.fosslight.domain.PartnerMaster;
-import oss.fosslight.domain.Project;
-import oss.fosslight.domain.ProjectIdentification;
-import oss.fosslight.domain.UploadFile;
+import oss.fosslight.domain.*;
 
 public interface ProjectService extends HistoryConfig{
 	public Map<String, Object> getProjectList(Project project);
@@ -172,5 +167,9 @@ public interface ProjectService extends HistoryConfig{
 	// 20210715_BOM COMPARE FUNC MOVE (LgeProjectService > ProjectService) >>>
 	public List<Map<String, String>> getBomCompare(List<ProjectIdentification> beforeBomList, List<ProjectIdentification> afterBomList, String flag) throws Exception;
 	// 20210715_BOM COMPARE FUNC MOVE (LgeProjectService > ProjectService) <<<
+
+
 }
+
+
 
